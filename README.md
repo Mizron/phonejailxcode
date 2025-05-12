@@ -55,6 +55,11 @@ phonejailOS/
 │ └── Persistence/
 │ ├── CoreDataStack.swift # Core Data setup for local database.
 │ └── LocalStorage.swift # User defaults or file-based storage.
+│ │
+│ └── LLM/
+│ ├── CoreLLMIntegration.swift # Generic LLM initialisation for the app.
+│ ├── LLMClient.swift # LLM client for the app to handle llm interaction.
+│ └── LLM.swift # The LLM we are using
 │
 ├── Helpers/
 │ ├── FormatterHelper.swift # Utility for formatting dates, numbers, etc.
