@@ -98,7 +98,7 @@ The goal is to create an iOS app that helps users manage their screen time and a
 - [x] Install Xcode and Command Line Tools (PREREQUISITE)
 - [x] Project initialization
 - [x] Basic project structure
-- [ ] ScreenTime API research
+- [x] ScreenTime API research
 - [ ] LLM integration research
 - [ ] App selection interface design
 - [ ] App discovery implementation
@@ -117,20 +117,43 @@ The goal is to create an iOS app that helps users manage their screen time and a
 ✅ Project structure organized
 ✅ Initial documentation created
 ✅ Basic test structure set up
+✅ Local git repository set up
+✅ Development branch created
+✅ Remote repository configured
+✅ Code pushed to GitHub
+✅ Basic models implemented:
+  - AppBlock model with categories and blocking logic
+  - Jailkeeper model with personalities and conversation handling
+✅ ViewModels implemented:
+  - AppBlockViewModel with app management and ScreenTime integration
+  - JailkeeperViewModel with conversation and LLM integration
 
 Next immediate tasks:
-1. Implement basic models (AppBlock, Jailkeeper)
-2. Set up ScreenTime API integration
-3. Research and implement LLM service
-4. Create basic UI components
+1. Implement ScreenTime service:
+   - App discovery
+   - Blocking/unblocking functionality
+   - Permission handling
+2. Implement LLM service:
+   - API integration
+   - Response generation
+   - Error handling
+3. Create basic UI components:
+   - App list view
+   - Jailkeeper chat interface
+   - Settings view
 
-Would you like me to proceed with implementing the basic models?
+Would you like me to proceed with implementing the ScreenTime service?
 
 ## Lessons
 - Xcode is required for iOS development and must be installed before proceeding
 - The Xcode Command Line Tools are separate from the full Xcode installation
 - Always verify project structure before making changes
 - Use MVVM architecture for better code organization and testability
+- Set up .gitignore before first commit to avoid committing unnecessary files
+- Push to remote repository early to ensure proper tracking
+- Use Swift's type system to enforce business rules (e.g., AppBlock states)
+- Use Combine for reactive programming and state management
+- Implement proper error handling and loading states
 
 ## Next Steps
 1. Install Xcode from the Mac App Store
