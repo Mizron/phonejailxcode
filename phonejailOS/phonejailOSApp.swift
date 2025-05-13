@@ -6,27 +6,25 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct phonejailOSApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+    @StateObject private var appBlockViewModel = AppBlockViewModel(screenTimeService: ScreenTimeService())
+    @StateObject private var jailkeeperViewModel = JailkeeperViewModel(llmService: LLMService())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                AppListView(viewModel: appBlockViewModel)
+                    .tabItem {
+                        Label("Apps", systemImage: "app.badge")
+                    }
+                
+                JailkeeperChatView(viewModel: jailkeeperViewModel)
+                    .tabItem {
+                        Label("Jailkeeper", systemImage: "person.fill")
+                    }
+            }
         }
-        .modelContainer(sharedModelContainer)
     }
 }
