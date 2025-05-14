@@ -25,7 +25,7 @@ struct phonejailOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppBlockerView()
         }
         .modelContainer(sharedModelContainer)
     }
