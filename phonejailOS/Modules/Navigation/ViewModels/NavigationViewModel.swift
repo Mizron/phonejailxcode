@@ -7,10 +7,10 @@
 
 import Foundation
 
-class NavigationViewModel {
+class NavigationViewModel : ObservableObject {
     @Published var navPath: [DestinationType] = []
     
     internal func navigatePage(to: DestinationType) {
-        
+        // ToDo: Implement NavigationLink
     }
 }

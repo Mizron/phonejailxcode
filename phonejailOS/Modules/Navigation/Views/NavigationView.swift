@@ -9,30 +9,34 @@ import SwiftUI
 
 struct NavigationView: View {
     @State public var navItems: [NavigationItem]
+    @StateObject public var navigationViewModel: NavigationViewModel
+    
+    // Colours
+    let bgColour = Color("BackgroundColour")
     
     var body: some View {
-        NavigationStack {
-        }.overlay(
-            ZStack {
-                Color.clear.background(.ultraThinMaterial)
-                    .blur(radius: 10)
-                    .ignoresSafeArea()
-
-                HStack(spacing: 30) {
-                    ForEach($navItems) { $item in
-                        Button(action: navigatePage) {
-                            Label(title: $item.title, systemImage: $item.icon)
-                        }
+        ZStack {
+            bgColour.ignoresSafeArea()
+            
+            NavigationStack {
+            }.overlay(
+                ZStack {
+                    HStack(spacing: 30) {
+                        ForEach($navItems) { $item in
+                            Button(action: {navigationViewModel.navigatePage(to: item.link)}) {
+                                Label(item.title, systemImage: item.icon ?? "")
+                            }
                             .font(.largeTitle.weight(.bold))
                             .frame(minWidth: 50)
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.horizontal, 20)
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.horizontal, 20)
-            }
-            .frame(height: 70)
-            .frame(maxHeight: .infinity, alignment: .bottom)
-        )
+                    .frame(height: 70)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+            )
+        }
     }
 }
 
@@ -42,6 +46,6 @@ struct NavigationView: View {
         NavigationItem(title: "Test3", link: DestinationType.settings),
         NavigationItem(title: "Test3", link: DestinationType.chat)
     ]
-    NavigationView(navItems: navItems)
+    NavigationView(navItems: navItems, navigationViewModel: NavigationViewModel())
 }
 
